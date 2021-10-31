@@ -63,3 +63,27 @@ func example(of: String = "using a stack") {
 example()
 
 
+
+//MARK: Challenge task
+///Check for balanced parentheses like below using stack
+// 1 h((e))llo(world)() // balanced parentheses
+// 2 (hello world // unbalanced parentheses
+
+func areParanthesesBalanced(_ string: String) -> Bool {
+    var stack = Stack<Character>()
+    for character in string {
+        if character == "(" {
+            stack.push(character)
+        } else if character == ")" {
+            if stack.isEmpty {
+                return false
+            } else {
+                stack.pop()
+            }
+        }
+    }
+    return stack.isEmpty
+}
+
+areParanthesesBalanced("h((e))llo(world)()")
+areParanthesesBalanced("(hello world")
